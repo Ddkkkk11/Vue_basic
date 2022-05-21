@@ -1,0 +1,81 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="/js/vue.js"></script>
+</head>
+
+<body>
+  <!-- 
+    el的两种写法
+      new  Vue的时候配置el属性
+      也可以创建Vue实例 然后在用  实例.$mount("#id")指定el的值
+
+      data的两种写法
+        1.对象式
+        2.函数式
+        对象 data{
+          name:"xdd"
+        }
+        函数
+        data:function(){
+          return{
+            name:""
+          }
+        }
+  注意：
+        由Vue管理的函数,一定不要写成this式子 一旦写了箭头函数,this就不在是Vue的实例了 因为箭头函数没有this
+
+   -->
+  <div id="root">
+    <h1>{{name}}</h1>
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+    /* 
+      el的两种写法
+    const x = new Vue({
+      //  el:"#root", //第一种写法
+
+      data: {
+        name: "xdd"
+      }
+    });
+    console.log(x);
+
+    // setTimeout(()=>x.$mount("#root"),1000)
+    setTimeout(() => { 
+      x.$mount("#root")
+      //第二种写法
+    }, 1000) */
+    //data的两种写法
+
+    const v = new Vue({
+      el: "#root",
+      //data的第一种写法:对象式
+      /* data: {
+       name: "xdd"
+     } */
+      //函数式
+      data: function () { 
+        //data函数中this
+        console.log("this是",this);  
+        return {
+            name:"xdd1"
+          }
+      }
+
+    });
+
+
+  </script>
+</body>
+
+</html>
+
+</body>
+
+</html>

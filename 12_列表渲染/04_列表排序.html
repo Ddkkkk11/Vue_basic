@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="/js/vue.js"></script>
+</head>
+<style>
+  * {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  div {
+    margin: 200px 0;
+  }
+</style>
+<body>
+<div id="root">
+  <input type="text" placeholder="请输入名字" v-model="keyWords">
+  <button @click="sortType=2">年龄升序</button>
+  <button @click="sortType=1">年龄降序</button>
+  <button @click="sortType=0">原顺序</button>
+  <h1>列表排序</h1>
+  <ul>
+    <li v-for="(p,index) in filPerson" :key="p.id">
+      {{p.name}}-{{p.age}}-{{p.gender}}
+      <input type="text">
+    </li>
+  </ul>
+</div>
+<script>
+  Vue.config.productionTip = false;
+  //用(computed)计算属性实现
+  new Vue({
+    el: "#root",
+    data: {
+      keyWords: "",
+      sortType: 0,//0 代表原顺序 1 代表降序 2代表升序
+      persons: [
+        {id: '001', name: "马冬梅", age: 23, gender: "女"},
+        {id: '002', name: "周冬雨", age: 19, gender: "女"},
+        {id: '003', name: "周杰伦", age: 20, gender: "男"},
+        {id: '004', name: "温兆伦", age: 45, gender: "男"},
+        {id: '005', name: "黄飞鸿", age: 78, gender: "男"},
+        {id: '006', name: "比尔盖茨", age: 65, gender: "男"},
+        {id: '007', name: "莎士比亚", age: 13, gender: "男"},
+        {id: '008', name: "拜登", age: 89, gender: "男"},
+        {id: '009', name: "特朗普", age: 46, gender: "男"},
+      ]
+    },
+    computed: {
+      filPerson() {
+        const arr = this.persons.filter((p) => {
+          return p.name.indexOf(this.keyWords) !== -1;
+        });
+        //判断一下是否需要排序
+        if (this.sortType) {
+          arr.sort((a, b) => {
+            return this.sortType === 1 ? b.age - a.age : a.age - b.age;
+          })
+          /*return this.sortType === 1 ? arr.sort((a, b) => {
+            return b.age - a.age;
+          }) : arr.sort((a, b) => {
+            return a.age - b.age;
+          })*/
+        }
+
+
+        return arr;
+        /* if (this.sortType == 1) {
+           return arr.sort((a, b) => {
+             return b.age - a.age;
+           })
+         } else if (this.sortType == 2) {
+           return arr.sort((a, b) => {
+             return a.age - b.age;
+           })
+         } else {
+           return arr;
+         }*/
+      }
+    }
+
+  })
+</script>
+</body>
+
+</html>

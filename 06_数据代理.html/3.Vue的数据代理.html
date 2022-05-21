@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="/js/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="root">
+    <h1>学校名称,{{name}}</h1>
+    <h1>学校地址,{{address}}</h1>
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+      el: "#root",
+      data:{
+        name: "安康学院", address: "安康"
+      }
+    });
+    //自己理解的数据代理
+  /*  const data={
+      name:"xdd",
+      address:"韩城"
+    };
+    Object.defineProperty(vm,"name",{
+      get(){
+        return  data.name;
+      },
+      set(value){
+        data.name=value;
+      }
+    });
+    const vm=new Vue({
+      data:data
+    });
+    vm._data=data;
+    */
+
+
+  </script>
+</body>
+
+</html>
+
+</body>
+
+</html>

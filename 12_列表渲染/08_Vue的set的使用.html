@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>监测数据改变原理</title>
+</head>
+<script src="/js/vue.js"></script>
+<body>
+<div id="root">
+  <h1>学校信息</h1>
+  <h2>学校名称:{{school.name}}</h2>
+  <h2>学校地址:{{school.address}}</h2>
+  <h2>校长:{{school.leader}}</h2>
+  </hr>
+  <h1>学生信息</h1>
+  <button @click="addSex">点我添加性别信息</button>
+  <h2>学生姓名:{{student.name}}</h2>
+  <h2 v-show="student.sex">学生性别:{{student.sex}}</h2>
+  <h2>学生年龄:真实 {{student.age.rAge}},对外{{student.age.sAge}}</h2>
+  <h2>朋友们</h2>
+  <ul>
+    <li v-for="(f,index) in student.friends" :key="index">
+      {{f.name}}----{{f.age}}
+    </li>
+  </ul>
+</diV>
+<script>
+  Vue.config.productionTip = false;
+  const vm = new Vue({
+    el: "#root",
+    data: {
+      school: {
+        name: "xdd",
+        address: "安康",
+      },
+      student: {
+        name: "tom",
+        age: {
+          rAge: 40,
+          sAge: 29
+        },
+        friends: [{name: "jack", age: 12}, {name: "tony", age: 13}]
+      }
+
+    }, methods: {
+      addSex() {
+        // Vue.set(this.student, "sex", "男")
+        this.$set(this.student, "sex", "女");
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

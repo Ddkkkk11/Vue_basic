@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>监测数据改变原理</title>
+
+</head>
+<script src="/js/vue.js"></script>
+
+<body>
+
+  <div id="root" :x="n">
+    <h2>当前的n值是{{n}}</h2>
+    <h2 v-text="n"> </h2>
+    <button @click="add">点我n++</button>
+    <button @click="bye">点击我销毁vm😀</button>
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+    new Vue({
+      el: "#root",
+      /*   template: `
+        <div>
+        <h2>当前的n值是{{n}}</h2>
+      <button @click="add">点我n++</button>
+      </div>`, */
+      data: {
+        n: 1
+      },
+      watch: {
+        n() {
+          console.log('n变化了');
+        }
+      },
+
+      methods: {
+        add() {
+          console.log('add');
+          this.n++;
+        },
+        bye() {
+          console.log('bye');
+          this.$destroy();
+        }
+      },
+      beforeCreate() {
+        console.log('beforeCreate');
+        /* console.log(this);
+        console.log(this._data); */
+      },
+      created() {
+        console.log('created');
+        // console.log(this);
+        // debugger;
+      },
+      beforeMount() {
+        console.log('beforeMount');
+        /*   console.log(this);
+          debugger; */
+      },
+      mounted() {
+        console.log('mounted');
+        // console.log(this);
+        // debugger;
+        console.log(this.$el, this.$el instanceof HTMLElement);
+      },
+      beforeUpdate() {
+        console.log('beforeUpdate');
+        //数据是新的 但是页面是旧的
+        // debugger;;
+      },
+      updated() {
+        console.log("updated");
+        this.n=99;
+        /* console.log(this.n);
+        debugger; */
+      },
+      beforeDestroy() {
+        console.log('beforeDestroy');
+        console.log(this.n);f
+      },
+      destroyed() {
+        console.log('bye~~');
+      },
+    })
+
+  </script>
+</body>
+
+</html>

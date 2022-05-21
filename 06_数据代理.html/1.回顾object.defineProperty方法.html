@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="/js/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="root">
+
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+
+    let number=80;
+    const person = {
+      name: "张三",
+      gender: "男",
+    };
+
+    Object.defineProperty(person, 'age', {
+      // value: 12,
+      // enumerable: true, //控制属性是否可以枚举,默认值是false
+      // writable: true  //控制属性是否可以被修改 默认值是false
+      // ,configurable:true//控制属性是否可以被删除
+      //当有人读取person的age属性时,get函数(getter)就会被调用,且返回值就是age的值
+
+      get() {
+        console.log("有人读取age属性了");
+        return number;
+      },
+      //当有人设置person的age属性时,set函数(getter)就会被调用,且会修改的具体值
+      //
+      set(value){
+        console.log("有人设置了age属性值是"+value);
+        number=value;
+      }
+    });
+    console.log(person);
+    // console.log(Object.keys(person));
+    // for (const key in person) {
+    //   console.log(person[key]);
+    // }
+  </script>
+</body>
+
+</html>
+</body>
+
+</html>

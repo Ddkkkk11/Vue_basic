@@ -1,0 +1,124 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="/js/vue.js"></script>
+  <style>
+    * {
+      margin-top: 100px;
+
+    }
+
+    .demo1 {
+      width: 100px;
+      height: 100px;
+      background-color: bisque;
+
+    }
+
+    .box1 {
+      padding: 5px;
+      background-color: tomato;
+    }
+
+    .box2 {
+      padding: 5px;
+      background-color: blue;
+    }
+
+    .list {
+      width: 200px;
+      height: 200px;
+      background-color: #bfa;
+      overflow: auto;
+    }
+
+    li {
+      height: 100px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    Vue中的事件修饰符
+      1.prevent:"组织默认事件"
+      2.stop组织冒泡事件
+      3.once事件只触发一次
+      4.capture:使用事件的捕获模式
+      5.self:只有event.target是当前操作的元素时间触发事件
+      6.passive:事件的默认行为是立即执行,无需等待事件回调执行完毕
+
+   -->
+
+  <div id="root">
+    <h2>欢迎你{{name}}</h2>
+
+    <!-- //1.prevent:"组织默认事件" -->
+    <a href="http://www.baidu.com" @click.prevent="sayHello">点我跳转百度</a>
+    <!-- 阻止事件冒泡 -->
+
+    <div class="demo1" @click="sayHello">
+      <!-- 修饰符可以连续写 -->
+      <button @click.stop="sayHello">点我提示信息</button>
+      <!-- <a  href="http://www.baidu.com" @click.stop.prevent="sayHello">点我提示信息</a> -->
+    </div>
+
+    <!-- 点我出发一次 -->
+    <button @click.once="sayHello">点我提示11信息</button>
+    <!-- 4.capture:使用事件的捕获模式 
+
+      -->
+    <div class="box1" @click.capture="showMas(1)">
+      div1 <div class="box2" @click="showMas(2)">div2</div>
+
+    </div>
+    <!-- self 只有event.target是当前操作的元素时间触发事件-->
+    <div class="demo1" @click.self="sayHello">
+      <button @click="sayHello">点我提示信息</button>
+    </div>
+    <!-- passive:事件的默认行为是立即执行,无需等待事件回调执行完毕 -->
+    <ul @wheel.passive="demo" class="list">
+      <li> 1</li>
+      <li> 2</li>
+      <li> 3</li>
+      <li> 4</li>
+    </ul>
+  </div>
+
+  <script>
+    Vue.config.productionTip = false;
+    new Vue({
+      el: "#root",
+      data: {
+        name: "xdd"
+      },
+      methods: {
+        sayHello(e) {
+          // e.stoppropagation
+          // event.preventDefault();
+          alert("同学你好");
+          // console.log(e.target);
+        },
+        showMas(num) {
+          alert(num);
+        }, demo() { 
+          for (let index = 0; index < 100000; index++) {
+              console.log("#");
+          };
+          console.log("累坏了");
+
+        }
+      }
+
+    });
+  </script>
+</body>
+
+</html>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+<<<<<<< HEAD
+  * {
+    font-size: 50px;
+  }
+=======
+    * {
+        font-size: 50px;
+    }
+>>>>>>> origin/master
+</style>
+<script src="/js/vue.js"></script>
+<body>
+<div id="root">
+<<<<<<< HEAD
+  <h1>查询</h1>
+  <input type="text" placeholder="请输入查询" v-model="keyWords">
+  <ul>
+    <li v-for="p in firName">{{p.name}}</li>
+  </ul>
+</div>
+<script !src="">
+  Vue.config.productionTip = false;
+  new Vue({
+    el: "#root",
+    data: {
+      keyWords: "",
+      persons: [{id: "001", name: "xdd", age: 20, gender: "男"},
+        {id: "002", name: "asd", age: 24, gender: "女"},
+        {id: "003", name: "zxc", age: 21, gender: "男"},
+        {id: "004", name: "qweasd", age: 22, gender: "女"},
+        {id: "005", name: "zxcasd", age: 26, gender: "男"},
+        {id: "006", name: "zasdxcasd", age: 23, gender: "男"}]
+    },
+    computed: {
+      firName() {
+        return this.persons.filter((p) => {
+          return p.name.indexOf(this.keyWords) !== -1;
+        })
+      }
+    }
+  })
+=======
+    <h1>查询</h1>
+    <input type="text" placeholder="请输入查询" v-model="keyWords">
+    <ul>
+        <li v-for="p in firName">{{p.name}}</li>
+    </ul>
+</div>
+<script !src="">
+    Vue.config.productionTip = false;
+    new Vue({
+        el: "#root",
+        data: {
+            keyWords: "",
+            persons: [{id: "001", name: "xdd", age: 20, gender: "男"},
+                {id: "002", name: "asd", age: 24, gender: "女"},
+                {id: "003", name: "zxc", age: 21, gender: "男"},
+                {id: "004", name: "qweasd", age: 22, gender: "女"},
+                {id: "005", name: "zxcasd", age: 26, gender: "男"},
+                {id: "006", name: "zasdxcasd", age: 23, gender: "男"}]
+        },
+        computed: {
+            firName() {
+                return this.persons.filter((p) => {
+                    return p.name.indexOf(this.keyWords) !== -1;
+                })
+            }
+        }
+    })
+>>>>>>> origin/master
+
+</script>
+</body>
+</html>

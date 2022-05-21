@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>深度监视</title>
+  <script src="/js/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <!-- <h2>今天天气很{{isHot ?'炎热':"凉爽"}}</h2> -->
+    <h2>今天天气很一般{{info}}</h2>
+    <button @click="isHot=!isHot">切换天气</button>
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+      el: "#root",
+      data: {
+        isHot: true,
+      },
+      methods: {
+        tab() {
+          this.isHot = !this.isHot;
+        }
+      },
+      computed: {
+        info() {
+          if (this.isHot) return "炎热";
+          return "凉爽";
+        }
+      },
+      watch: {
+        //完整写法
+        /*  isHot: {
+           // immediate:true,//初始化的时候调用一下handle
+           //深度监视          deep:ture,
+           handler(newValue, oldValue) {
+             console.log("isHot被修改了", newValue, oldValue)
+           }
+         }, */
+        //简写
+        /*  isHot(newValue, oldValue) {
+               console.log(newValue,oldValue);
+         } */
+      }
+    });
+    //完整写法
+    /*  vm.$watch("isHot", {
+       immediate:true,//初始化的时候调用一下handle
+       深度监视          deep:ture,
+       handler(newValue, oldValue) {
+         console.log("isHot被修改了", newValue, oldValue)
+       }
+     }) */
+    //简写方法
+   /*  vm.$watch("isHot", function(newValue, oldValue) {
+      console.log(this);
+      console.log(newValue, oldValue);  //不能用那个箭头函数 会影响this 
+    }) */ 
+
+
+     vm.$watch("isHot", (newValue, oldValue) => {
+       console.log(newValue, oldValue);
+       console.log(this);
+      }
+       )
+
+  </script>
+</body>
+
+</html>
+
+</body>
+
+</html>

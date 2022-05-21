@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>计算属性</title>
+  <script src="/js/vue.js"></script>
+</head>
+<body>
+<div id="root">
+  <h1>人员信息</h1>
+  <input type="text" placeholder="请输入查询" v-model="keyWords">
+  <li v-for="p in filPerson">
+
+    {{p.name}} ---- {{p.age}} ---{{p.gender}}
+  </li>
+
+</div>
+<script>
+  Vue.config.productionTip = false;
+  new Vue({
+    el: "#root",
+    data: {
+      keyWords: "",
+      persons: [{id: "001", name: "xdd", age: "20", gender: "男"},
+        {id: "002", name: "xjd", age: "21", gender: "女"},
+        {id: "003", name: "按顺序", age: "22", gender: "女"},
+        {id: "004", name: "现在才", age: "24", gender: "女"},
+        {id: "005", name: "第三方", age: "25", gender: "女"},
+        {id: "006", name: "啊是的请问", age: "26", gender: "男"}],
+      filPerson: [],
+    },
+
+    watch: {
+      keyWords: {
+        immediate: true,
+        handler(val) {
+          this.filPerson = this.persons.filter((p) => {
+            return p.name.indexOf(val) !== -1;
+          })
+
+        }
+
+
+      }
+    }
+
+  })
+
+
+</script>
+</body>
+</html>

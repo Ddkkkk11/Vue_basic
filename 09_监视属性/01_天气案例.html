@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="/js/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="root">
+    <!-- <h2>今天天气很{{isHot ?'炎热':"凉爽"}}</h2> -->
+    <h2>今天天气很一般{{info}}</h2>
+    <button @click="isHot=!isHot">切换天气</button>
+    <!--绑定事件的时候 @xxx="yyy "  yyy可以写一些简单的语句 -->
+    <!-- <button @click="tab">切换天气</button> -->
+  </div>
+  <script>
+    Vue.config.productionTip = false;
+   const vm= new Vue({
+      el: "#root",
+      data: {
+        isHot: true,
+      },
+      methods: {
+        tab(){
+          this.isHot=!this.isHot;
+        }
+      },
+      computed: {
+        info() {
+          if (this.isHot) return "炎热";
+          return "凉爽";
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>
+
+</body>
+
+</html>

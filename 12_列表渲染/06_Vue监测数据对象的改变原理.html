@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>监测数据改变原理</title>
+</head>
+<script src="/js/vue.js"></script>
+<body>
+<div id="root">
+  <h2>学校名称:{{name}}</h2>
+  <h2>学校名称:{{student}}</h2>
+  <h2>学校地址:{{address}}</h2>
+</diV>
+<script>
+  Vue.config.productionTip = false;
+  const vm = new Vue({
+    el: "#root",
+    data: {
+      name: "xdd",
+      address: "安康",
+      student: {
+        name: "tom",
+        age: {
+          rAge: 40,
+          sAge: 29
+        },
+        friends: [{name: "asd", age: 12}]
+      }
+
+    }
+  })
+
+</script>
+</body>
+</html>

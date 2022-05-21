@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="/js/vue.js"></script>
+</head>
+<style>
+  * {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  div {
+    margin: 200px 0;
+  }
+</style>
+<body>
+<div id="root">
+  <h1>列表排序</h1>
+  <button @click="updateMei">马老师</button>
+  <ul>
+    <li v-for="(p,index) in persons" :key="p.id">
+      {{p.name}}-{{p.age}}-{{p.gender}}
+    </li>
+  </ul>
+</div>
+<script>
+  Vue.config.productionTip = false;
+  const vm = new Vue({
+    el: "#root",
+    data: {
+      keyWords: "",
+      sortType: 0,//0 代表原顺序 1 代表降序 2代表升序
+      persons: [
+        {id: '001', name: "马冬梅", age: 23, gender: "女"},
+        {id: '002', name: "周冬雨", age: 19, gender: "女"},
+        {id: '003', name: "周杰伦", age: 20, gender: "男"},
+        {id: '004', name: "温兆伦", age: 45, gender: "男"},
+        {id: '005', name: "黄飞鸿", age: 78, gender: "男"},
+        {id: '006', name: "比尔盖茨", age: 65, gender: "男"},
+        {id: '007', name: "莎士比亚", age: 13, gender: "男"},
+        {id: '008', name: "拜登", age: 89, gender: "男"},
+        {id: '009', name: "特朗普", age: 46, gender: "男"},
+      ]
+    },
+    methods: {
+      updateMei() {
+        /*  this.persons[0].name = '马老师';  //奏效
+          this.persons[0].gender = "女";  //奏效
+          this.persons[0].age = 50;  //奏效*/
+        this.persons[0] = {id: "001", name: "马老师", gender: "女", age: 50};
+      }
+
+    }
+  })
+</script>
+</body>
+
+</html>
