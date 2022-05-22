@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>一个重要的内置关系</title>
+</head>
+<script src="/js/vue.js"></script>
+
+<body>
+<!--一个重要的内置对象
+ 1.   VueComponent.prototype.__proto__=Vue.prototype;
+  2.为什么有这个关系,让组件实例对象(vc可以访问到Vue原型上的方法),和属性
+-->
+<div id="root">
+  <school></school>
+</div>
+<script>
+  Vue.config.productionTip = false;
+  Vue.prototype.num = 200;
+
+  /*new Vue({
+    el: "#root",
+    data: {}
+
+  })*/
+  /*  //定义一个构造函数
+    function Demo() {
+      this.a = 1;
+      this.b = 2;
+    };
+    //创建一个demo 的实例对象
+    const de = new Demo();
+    console.log(Demo.prototype)//显示原型属性
+    console.log(de.__proto__)//隐式原型对象
+    //通过显示原型属性操作原型对象 追加一个x属性
+    Demo.prototype.x = 100;
+
+    console.log(de.x)*/
+  let vc;
+  const school = Vue.extend(
+          {
+            template:
+                    `
+                      <div>
+                      <h2>{{ schoolName }}</h2>
+                      <h2>{{ schoolAddress }}</h2>
+                      <button @click="showVC">点我输出VueComponent实例</button>
+                      </div>`,
+            data() {
+              return {
+                schoolName: '安康学院',
+                schoolAddress: '安康'
+              }
+            }
+            ,
+            methods: {
+              showVC() {
+                vc = this;
+                console.log('已经把this变成了vc')
+              }
+            }
+          });
+  const vm = new Vue({
+    el: "#root",
+    data: {msg: '你好'},
+    components: {
+      school
+    }
+  });
+  // console.log(school.prototype.__proto__ === Vue.prototype)
+</script>
+</body>
+
+</html>
