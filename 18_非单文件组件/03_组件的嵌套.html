@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>demo</title>
+</head>
+<script src="/js/vue.js"></script>
+
+<body>
+<div id="root">
+
+</div>
+<script>
+  Vue.config.productionTip = false;
+  //创建student组件
+  const student = {
+    template:
+    //组件注册给谁 在谁那块写
+            `
+              <div>
+              <h2>{{ studentName }}</h2>
+              <h2>{{ studentAge }}</h2>
+              </div>`,
+    data() {
+      return {
+        studentName: 'xdd',
+        studentAge: 20
+      }
+    }
+  };
+  //定义组件school 组件
+  const school = {
+    template:
+            `
+              <div>
+              <h2>{{ schoolName }}</h2>
+              <h2>{{ schoolAddress }}</h2>
+              <student></student>
+              </div>`,
+    data() {
+      return {
+        schoolName: '安康学院',
+        schoolAddress: '安康'
+      }
+    },
+    components: {
+      //注册student组件
+      student
+    }
+  };
+  //定义一个hello组件
+  const hello = {
+    template: `
+      <h2>欢迎来到Vue{{ msg }}</h2>
+    `,
+    data() {
+      return {
+        msg: '学习',
+      }
+    }
+  };
+  //定义app组件
+  const app = {
+    template: `
+      <div>
+      <hello></hello>
+      <school></school>
+      </div>`,
+    components: {
+      school,
+      hello
+    }
+  };
+  new Vue({
+    template: `
+      <app></app>`,
+    el: "#root",
+    //注册组件(局部)
+    components: {
+      app
+      // MySchool: s
+    }
+  });
+</script>
+</body>
+</html>
