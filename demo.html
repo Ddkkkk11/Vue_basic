@@ -2,23 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>监测数据改变原理</title>
+  <title>demo</title>
 </head>
 <script src="/js/vue.js"></script>
 <body>
 <div id="root">
-  {{name}}
 </diV>
 <script>
-  Vue.config.productionTip = false;
-  new Vue({
-    el: "#root",
-    data: {
-      name: "xdd"
-    }
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
 
-  })
-
+  console.log(Person)
+  const per = new Person("asd", 12);
+  const per1 = new Person("zxc", 23);
+  console.log('正确吗', per.__proto__ === per1.__proto__);
 </script>
 </body>
 </html>
