@@ -1,36 +1,82 @@
 <template>
-  <div>
-    <h1 v-text="msg" ref="title"></h1>
-    <button ref="btn" @click="showDom">点我输出上方的dom元素</button>
-    <!-- <img src="./assets/logo.png" alt="" /> -->
-    <!-- <Student> </Student> -->
-    <School id="sch"></School>
+  <div id="root">
+    <div class="todo-container">
+      <div class="todo-wrap">
+        <!--        头部-->
+        <Top></Top>
+        <!--        列表项-->
+        <List></List>
+        <!--        底部-->
+        <Bottom></Bottom>
+      </div>
+    </div>
   </div>
 </template>
 <script>
-//引入组件School
-import School from "./components/School.vue";
-// import Student from "./components/Student.vue";
+//引入组件
+import Top from "@/components/Top";
+import Bottom from "@/components/Bottom";
+import List from "@/components/list";
+
 export default {
   name: "App",
   components: {
-    School,
-    // Student,
-  },
-  data() {
-    return {
-      msg: "我能行",
-    };
-  },
-  methods: {
-    showDom() {
-      console.log(this.$refs.btn); //真实DOM元素 btn
-      // console.log(this.$refs.title); //真实DOM元素 h1
-      // alert(this.$refs.title);
-      // console.log(this.$refs.sch); //sch对于的组件实例对象
-      // console.log(this.$refs); // btn h1 还有sch实例对象
-      console.log(document.getElementById("sch"));
-    },
+    Top, Bottom, List,
   },
 };
+
 </script>
+<style>
+/*base*/
+body {
+  background: #fff;
+}
+
+.btn {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #da4f49;
+  border: 1px solid #bd362f;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #bd362f;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.todo-container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.todo-container .todo-wrap {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+
+/*main*/
+
+/*item*/
+
+/*footer*/
+
+
+</style>
