@@ -3,9 +3,9 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <!--        头部-->
-        <Top></Top>
+        <Top :addTodo="addTodo"></Top>
         <!--        列表项-->
-        <List></List>
+        <List :todoList='todoList' :changeValue="changeValue"></List>
         <!--        底部-->
         <Bottom></Bottom>
       </div>
@@ -23,8 +23,31 @@ export default {
   components: {
     Top, Bottom, List,
   },
-};
+  data() {
+    return {
+      todoList: [
+        {id: '001', title: '吃饭', done: false},
+        {id: '002', title: '睡觉', done: false},
+        {id: '003', title: 'code', done: true},
+        {id: '004', title: 'English', done: false},
+      ]
+    }
+  },
+  methods: {
+    addTodo(x) {
+      // console.log("我收到了数据" + x);
+      this.todoList.unshift(x);
+    },
+    //勾选or取消勾选
+    changeValue(id) {
+      this.todoList.forEach((todo) => {
+        console.log(todo)
+        if (todo.id === id) todo.done = !todo.done;
+      })
+    }
 
+  }
+};
 </script>
 <style>
 /*base*/

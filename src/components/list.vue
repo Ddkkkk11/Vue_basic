@@ -1,6 +1,10 @@
 <template>
   <ul class="todo-main">
-    <Item v-for="todo in todoList" :key="todo.id" :value="todo"></Item>
+    <Item v-for="todoObj in todoList"
+          :key="todoObj.id"
+          :todo="todoObj"
+          :changeValue="changeValue">
+    </Item>
   </ul>
 </template>
 <script>
@@ -11,16 +15,9 @@ export default {
   components: {
     Item
   },
-  data() {
-    return {
-      todoList: [
-        {id: '001', title: '吃饭', done: false},
-        {id: '002', title: '睡觉', done: false},
-        {id: '003', title: 'code', done: true},
-        {id: '004', title: 'English', done: false},
-      ]
-    }
-  }
+  props: ['todoList', 'changeValue'],
+  //props是只读的不能修改值的大小
+
 }
 </script>
 

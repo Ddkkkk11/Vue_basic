@@ -1,8 +1,8 @@
 <template>
   <li>
     <label>
-      <input type="checkbox" v-model:checked="value.done"/>
-      <span>{{ value.title }}</span>
+      <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)"/>
+      <span>{{ todo.title }}</span>
     </label>
     <button class="btn btn-danger" style="display:none">删除</button>
   </li>
@@ -12,9 +12,16 @@
 export default {
   name: 'Item',
   //声明接受 todo对象
-  props: ['value',],
-  mounted() {
-    console.log(this.value)
+  props: ['todo', 'changeValue'],
+  methods: {
+    handleCheck(id) {
+      // console.log(id);
+      //通知App组件对应的value对象的done 取反
+      /*  this.value.done = !this.value.done;
+        console.log(this.value.done);*/
+      console.log(this.todo)
+      this.changeValue(id);
+    }
   }
 }
 </script>
