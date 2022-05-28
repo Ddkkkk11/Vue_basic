@@ -3,7 +3,9 @@
     <Item v-for="todoObj in todoList"
           :key="todoObj.id"
           :todo="todoObj"
-          :changeValue="changeValue">
+          :changeValue="changeValue"
+          :removeBtn="removeBtn"
+    >
     </Item>
   </ul>
 </template>
@@ -15,7 +17,7 @@ export default {
   components: {
     Item
   },
-  props: ['todoList', 'changeValue'],
+  props: ['todoList', 'changeValue', 'removeBtn'],
   //props是只读的不能修改值的大小
 
 }

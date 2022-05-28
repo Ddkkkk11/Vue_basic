@@ -5,9 +5,12 @@
         <!--        头部-->
         <Top :addTodo="addTodo"></Top>
         <!--        列表项-->
-        <List :todoList='todoList' :changeValue="changeValue"></List>
+        <List :todoList='todoList' :changeValue="changeValue" :removeBtn="removeBtn"></List>
         <!--        底部-->
-        <Bottom></Bottom>
+        <Bottom :todoList='todoList'
+                :clearEvery="clearEvery"
+                :hookAll="hookAll"
+        ></Bottom>
       </div>
     </div>
   </div>
@@ -30,10 +33,11 @@ export default {
         {id: '002', title: '睡觉', done: false},
         {id: '003', title: 'code', done: true},
         {id: '004', title: 'English', done: false},
-      ]
+      ],
     }
   },
   methods: {
+    //添加信息
     addTodo(x) {
       // console.log("我收到了数据" + x);
       this.todoList.unshift(x);
@@ -41,9 +45,31 @@ export default {
     //勾选or取消勾选
     changeValue(id) {
       this.todoList.forEach((todo) => {
-        console.log(todo)
+        // console.log(todo)
         if (todo.id === id) todo.done = !todo.done;
       })
+    },
+    //删除
+    removeBtn(id) {
+      /* this.todoList.forEach((Ele, index) => {
+         if (Ele.id === id) {
+           this.todoList.splice(index, 1);
+         }
+       });*/
+      this.todoList = this.todoList.filter((todo) => {
+        return todo.id !== id;
+      })
+    },
+    //删除全部
+    clearEvery() {
+      this.todoList = this.todoList.filter((todo) => {
+        // if (todo.id === id)
+        return !todo.done
+      })
+    },
+    //全选
+    hookAll(judge) {
+      this.todoList.forEach((value) => value.done = judge)
     }
 
   }
