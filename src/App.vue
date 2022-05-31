@@ -7,8 +7,8 @@
     <School :getSChoolName="getSChoolName"></School>
     <hr>
     <!--    通过父组件给子组件绑定一个自定义事件实现：子数据给父传递(第一种写法,使用@或v-on)-->
-    <!--    <Student v-on:xdd="getStudentName"></Student>-->
-    <Student v-on:xdd.once="getStudentName"></Student>
+    <Student v-on:xdd="getStudentName" @demo="m1"></Student>
+    <!--    <Student v-on:xdd.once="getStudentName"></Student>-->
     <!--    通过父组件给子组件绑定一个自定义事件实现：子数据给父传递(第一种写法,使用ref this.$refs.student.$on('xdd',getStudentName)-->
     <!--    <Student ref="student"></Student>-->
   </div>
@@ -35,8 +35,11 @@ export default {
       return name;
     },
     getStudentName(name, ...params) {
-      console.log("app收到了学生名称是 ",);
-      console.log(...params);
+      console.log("app收到了学生名称是 ", name);
+      // console.log(...params);
+    },
+    m1() {
+      console.log('m1被调用')
     }
   },
   mounted() {
@@ -45,7 +48,7 @@ export default {
       // this.$refs.student.$on('xdd', this.getStudentName)//绑定自定义事件
       //只能绑定一次
       // console.log(this.$refs.student.gender)
-      this.$refs.student.$once('xdd', this.getStudentName);//绑定事件只发生一次
+      // this.$refs.student.$on('xdd', this.getStudentName);//绑定事件只发生一次
     }, 0);
   }
 };
