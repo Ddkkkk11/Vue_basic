@@ -31,7 +31,8 @@ export default {
     sendSchoolName() {
       //触发Student组件实例身上的xdd 事件
       this.$emit('xdd', this.name, 123, 123, 12, 'qweasd', 'aasd', 'a', 'dasd', 'ad', 'asd', 'a', 'd', 'asd', 'ad', 123)
-      this.$emit('demo',)
+      // this.$emit('demo',)
+      // this.$emit('click');
     },
     unBing() {
       this.$off('xdd');//只适用于解绑一个事件
@@ -41,6 +42,7 @@ export default {
     death() {
       this.$destroy();//销毁了Student当前的实例对象
       //销毁后所有Student组件的实例的自定义事件全部都不奏效了,
+
     }
   },
 
