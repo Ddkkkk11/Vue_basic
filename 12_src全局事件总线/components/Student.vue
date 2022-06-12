@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import pubsub from "pubsub-js";
 export default {
   name: "Student",
   data() {
@@ -16,15 +15,16 @@ export default {
       gender: "男",
     };
   },
-
+  mounted() {
+    // console.log(this.x);
+  },
   methods: {
     post() {
-      // this.$bus.$emit("hello", this.name);
-      pubsub.publish("hello", 666);
+      this.$bus.$emit("hello", this.name);
     },
   },
   beforeDestroy() {
-    // this.$bus.$off("hello");
+    this.$bus.$off("hello");
   },
 };
 </script>

@@ -24,7 +24,8 @@ export default {
   methods: {
     demo() {
       this.hello();
-    }
+
+    },
   }
 };
 </script>
