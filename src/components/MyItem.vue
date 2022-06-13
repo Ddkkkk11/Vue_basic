@@ -14,6 +14,7 @@
           v-show="todo.isEdit"
           :value="todo.title"
           @blur="handleBlur(todo,$event)"
+          ref="inputTitle"
       >
     </label>
     <button class="btn btn-danger" @click="handleDelete(todo.id)">删除</button>
@@ -41,7 +42,7 @@ export default {
         //通知App组件将对应的todo对象删除
         // this.deleteTodo(id)
         // this.$bus.$emit("deleteTodo", id);
-        pubsub.publish('deleteTodo', id)
+        pubsub.publish('deleteTodo', id);
       }
 
     },
@@ -52,7 +53,19 @@ export default {
       } else {
         this.$set(todo, 'isEdit', true);
       }
-      console.log(todo)
+      ;
+      /*setTimeout(() => {
+        this.$refs.inputTitle.focus();
+      }, 200)*/
+      /*this.$nextTick(() => {
+        this.$refs.inputTitle.focus();
+        console.log(this)
+      }) */
+      this.$nextTick(function () {
+        this.$refs.inputTitle.focus();
+        console.log(this)
+      })
+      // console.log(todo);
     },
     //失去焦点执行修改逻辑
     handleBlur(todo, e) {
