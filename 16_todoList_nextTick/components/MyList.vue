@@ -1,20 +1,22 @@
 <template>
   <ul class="todo-main">
-    <transition-group appear name="todo">
-      <MyItem v-for="todoObj in todos" :key="todoObj.id" :todo="todoObj" />
-    </transition-group>
+    <MyItem
+        v-for="todoObj in todos"
+        :key="todoObj.id"
+        :todo="todoObj"
+    />
   </ul>
 </template>
 
 <script>
-import MyItem from "./MyItem";
+import MyItem from './MyItem'
 
 export default {
-  name: "MyList",
-  components: { MyItem },
+  name: 'MyList',
+  components: {MyItem},
   //声明接收App传递过来的数据，其中todos是自己用的，checkTodo和deleteTodo是给子组件MyItem用的
-  props: ["todos"],
-};
+  props: ['todos']
+}
 </script>
 
 <style scoped>
@@ -33,19 +35,5 @@ export default {
   border-radius: 2px;
   padding-left: 5px;
   margin-top: 10px;
-}
-.todo-enter-active {
-  animation: 0.5s run;
-}
-.todo-leave-active {
-  animation: run 0.5s reverse;
-}
-@keyframes run {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
 }
 </style>
