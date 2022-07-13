@@ -2,7 +2,8 @@
   <div class="category">
     <h3>{{ title }}分类</h3>
     <!--    定义一个插槽 挖个坑 等着组件使用着填充-->
-    <slot></slot>
+    <slot name="content"> 没有默认值的时候我就出现了1</slot>
+    <slot name="footer">没有默认值的时候我就出现了2</slot>
   </div>
 </template>
 
