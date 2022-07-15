@@ -8,8 +8,6 @@ import Subject from "../pages/Subject";
 import News from "../pages/News";
 import Message from "../pages/Message";
 import Detail from "../pages/Detail";
-
-
 //创建并暴露一个路由器
 export default new VueRouter({
     routes: [

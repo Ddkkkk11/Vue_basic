@@ -4,7 +4,6 @@
       <div class="col-xs-offset-2 col-xs-8">
         <Banner/>
       </div>
-
     </div>
     <div class="row">
       <div class="col-xs-2 col-xs-offset-2">

@@ -4,7 +4,6 @@
     <li>title:{{ $route.query.title }}</li>
     <li id="saying">网易云精选评论:{{ $route.query.saying[0].title }}</li>
   </ul>
-
 </template>
 
 <script>

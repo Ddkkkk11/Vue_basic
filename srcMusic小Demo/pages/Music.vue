@@ -1,6 +1,5 @@
 <template>
   <h2>{{ sayIng[0].title }}</h2>
-
 </template>
 
 <script>
