@@ -1,6 +1,7 @@
 <template>
   <div>
     <ul>
+
       <li v-for="list in messageList" :key="list.id">
         <!--        跳转路由并携带query参数 to的字符串写法-->
         <!--        <router-link :to='`/home/message/detail?id=${list.id}&title=${list.title}`'>{{ list.title }}-->

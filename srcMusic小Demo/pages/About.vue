@@ -4,6 +4,7 @@
 
 <script>
 export default {
+
   name: "About",
   /*beforeDestroy() {
     console.log('About我要被销毁了')

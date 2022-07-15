@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App.vue'
 //引入路由VueRouter
 import VueRouter from 'vue-router'
+
 //引入路由器
 import router from "./router/index";
 //关闭Vue的生产提示

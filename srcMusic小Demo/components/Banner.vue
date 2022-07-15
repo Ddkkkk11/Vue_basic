@@ -2,6 +2,7 @@
   <div class="page-header"><h2>Vue Router Demo</h2>
     <!--    <h3 v-show="sayIng.length!=0">{{ sayIng[0].title }}</h3>-->
     <h3>歌名：{{ title }}</h3>
+
   </div>
 
 </template>
