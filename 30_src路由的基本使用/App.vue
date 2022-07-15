@@ -15,7 +15,6 @@
           <router-link class="list-group-item " active-class="active" to="/about">About</router-link>
           <router-link class="list-group-item" active-class="active" to="/home">Home</router-link>
           <router-link class="list-group-item" active-class="active" to="/school">School</router-link>
-          <router-link class="list-group-item" active-class="active" to="/subject">Subject</router-link>
           <!--          <router-link to="/about">About</router-link>
                     <router-link to="/home">Home</router-link>-->
         </div>
@@ -34,13 +33,13 @@
 </template>
 
 <script>
-import Home from './pages/Home'
-import About from './pages/About'
+import Home from './components/Home'
+import About from './components/About'
 import Banner from './components/Banner'
 
 export default {
   name: "App",
-  components: {Banner},
+  components: {Home, About, Banner},
   mounted() {
     // console.log(this)
   }

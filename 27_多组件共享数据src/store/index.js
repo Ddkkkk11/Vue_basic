@@ -38,14 +38,19 @@ const actions = {
 };
 //准备mutations --用于操作数据(state)
 const mutations = {
-    JIA(state, n) {
-        state.sum += n;
+    JIA(state, value) {
+        state.sum += value;
         console.log('mutations中的JIA加被调用',)
-        console.log(state)
+        // console.log(state)
+        console.log(value)
     },
-    JIAN(state, n) {
-        state.sum -= n;
+    JIAN(state, value) {
+        state.sum -= value;
         console.log('mutations中的JIAN加被调用')
+    },
+    ADDPERSON(state, personObj) {
+        state.personList.unshift(personObj);
+        console.log('ADDPERSON被调用了')
     }
 };
 
@@ -53,7 +58,14 @@ const mutations = {
 const state = {
     sum: 0,
     school: '家里',
-    subject: '前端'
+    subject: '前端',
+    personList: [
+        {id: '001', name: '张三'},
+        {id: '002', name: '李四'},
+        {id: '003', name: '王麻子'},
+        {id: '004', name: '孙六'},
+        {id: '005', name: '赵七'},
+    ]
 };
 //准备getters
 const getters = {
