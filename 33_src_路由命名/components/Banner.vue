@@ -1,10 +1,10 @@
 <template>
-  <h2>我是新组件</h2>
+  <div class="page-header"><h2>Vue Router Demo</h2></div>
 </template>
 
 <script>
 export default {
-  name: "New"
+  name: "Banner"
 }
 </script>
 

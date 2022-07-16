@@ -33,15 +33,15 @@
           :to="{
             name: 'xiangqing',
             // path:'/home/message/detail',
-            query: {
+            params: {
               id: list.id,
               title: list.title,
-              name: list.name,
             },
           }"
         >
           {{ list.title }}
         </router-link>
+        
       </li>
 
       <hr />
@@ -59,10 +59,10 @@ export default {
   data() {
     return {
       messageList: [
-        { id: nanoid(), title: "消息001", name: "xdd" },
-        { id: nanoid(), title: "消息002", name: "xzz" },
-        { id: nanoid(), title: "消息003", name: "asd" },
-        { id: nanoid(), title: "消息004", name: "zxc" },
+        { id: nanoid(), title: "消息001" },
+        { id: nanoid(), title: "消息002" },
+        { id: nanoid(), title: "消息003" },
+        { id: nanoid(), title: "消息004" },
       ],
     };
   },
