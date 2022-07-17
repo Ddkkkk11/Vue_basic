@@ -1,8 +1,8 @@
 <template>
   <ul>
-    <li>news001</li>
-    <li>news002</li>
-    <li>news003</li>
+    <li>news001 <input type="text"></li>
+    <li>news002 <input type="text"></li>
+    <li>news003 <input type="text"></li>
     <router-link class="list-group-item" active-class="active" to="/home/news/news">我还有孩子</router-link>
     <router-view></router-view>
   </ul>
@@ -10,7 +10,10 @@
 
 <script>
 export default {
-  name: "HomeSon"
+  name: "News",
+  beforeDestroy() {
+    console.log('news组件即将被销毁了')
+  }
 }
 </script>
 

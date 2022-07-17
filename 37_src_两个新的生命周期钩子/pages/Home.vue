@@ -11,8 +11,18 @@
           </router-link>
         </li>
       </ul>
-      <router-view>
-      </router-view>
+      <keep-alive include="News">
+        <router-view>
+        </router-view>
+
+
+      </keep-alive>
+      <!--        缓存多个include="news
+                          缓存一个:include="['News','Message']
+        "-->
+      <!--        这里的News是组件名称 -->
+
+
     </div>
   </div>
 </template>
